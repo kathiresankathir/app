@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import React, { useEffect } from 'react';
+import AppNav from './Navigation/AppNav';
+import AuthProvider from './Context/AuthContext';
+import AuthProvider2 from './Context/Patientauth';
 
-export default function App() {
+import 'react-native-get-random-values';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+
+const App = () => {
+  useEffect(() => {
+    const loadApp = async () => {
+      // await loadFonts();
+    };
+    
+
+    loadApp();
+  }, []);
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+    <AuthProvider>
+    <AuthProvider2>
+      <StatusBar/>
+      <AppNav />
+    </AuthProvider2>
+    </AuthProvider>
+    
+   
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
